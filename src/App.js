@@ -51,6 +51,12 @@ export default function App() {
             </Route>
             <Route exact path="/shopping-list">
               {/* if there's a user, take them to the list page. Otherwise, redirect them to the home/auth page */}
+              {
+                currentUser 
+                  ? <ListPage />
+                  : <AuthPage />
+
+              }
 
             </Route>
           </Switch>
