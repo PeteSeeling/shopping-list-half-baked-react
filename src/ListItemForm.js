@@ -14,10 +14,10 @@ export default function ListItemForm({ fetchItems }) {
     
     // make a new list item in supabase using the form values stored in state
     await createListItem({ name, quantity });
-    history.push('/items');
+    history.push('/shopping_list_items');
    
 
-  
+    fetchItems([]);
     // refetch the items using the handler functionpassed down as a prop
     fetchItems();
     setName('');
@@ -34,7 +34,7 @@ export default function ListItemForm({ fetchItems }) {
         <label>
             Quantity
           {/* on change, update the quantity in state */}
-          <input onChange={setQuantity}
+          <input onChange={e => setQuantity(e.target.value)}value={quantity}
             // this should be a controlled input, soi set the value based on state
             required 
             type="number" 
@@ -45,7 +45,7 @@ export default function ListItemForm({ fetchItems }) {
         <label>
             Name
           {/* on change, update the name in state */}
-          <input onChange={setName}
+          <input onChange={e => setName(e.target.value)}value={name}
             // this should be a controlled input, soi set the value based on state 
             required 
             name="name" />
