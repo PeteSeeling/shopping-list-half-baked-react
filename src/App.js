@@ -22,6 +22,8 @@ export default function App() {
     // call the logout function
     logout();
     // clear the user in state
+    currentUser('');
+    setCurrentUser('');
     // setUser('');
   }
 
@@ -44,7 +46,7 @@ export default function App() {
               {/* if there is a user, redirect to the list. Otherwise, render the auth page. Note that the AuthPage will need a function called setUser that can set the user state in App.js */}
               {
                 currentUser 
-                  ? <Redirect to="/ListPage" />
+                  ? <Redirect to="/shopping-list" />
                   : <AuthPage />
 
               }

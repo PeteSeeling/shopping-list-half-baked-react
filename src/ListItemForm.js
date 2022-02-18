@@ -1,25 +1,24 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { createListItem } from './services/fetch-utils';
 
 export default function ListItemForm({ fetchItems }) {
   // you'll need to track the name and quantity in state
-  const [listItem, setListItem] = useState([]);
+ 
   const [quantity, setQuantity] = useState('');
   const [name, setName] = useState('');
-  const history = useHistory();
+
 
   async function handleSubmit(e) {
     e.preventDefault();
     
     // make a new list item in supabase using the form values stored in state
     await createListItem({ name, quantity });
-    history.push('/items');
+    // history.push('/shopping_list_items');
    
 
-  
+
     // refetch the items using the handler functionpassed down as a prop
-    fetchItems();
+    await fetchItems();
     setName('');
     setQuantity(0);
     
@@ -34,7 +33,7 @@ export default function ListItemForm({ fetchItems }) {
         <label>
             Quantity
           {/* on change, update the quantity in state */}
-          <input onChange={setQuantity}
+          <input onChange={e => setQuantity(e.target.value)}value={quantity}
             // this should be a controlled input, soi set the value based on state
             required 
             type="number" 
@@ -45,7 +44,7 @@ export default function ListItemForm({ fetchItems }) {
         <label>
             Name
           {/* on change, update the name in state */}
-          <input onChange={setName}
+          <input onChange={e => setName(e.target.value)}value={name}
             // this should be a controlled input, soi set the value based on state 
             required 
             name="name" />
