@@ -4,8 +4,9 @@ import ListItemForm from './ListItemForm';
 import ListItem from './ListItem';
 
 export default function ListPage() {
-  const [listItems, setShoppingList] = useState([]);
 
+  const [listItems, setShoppingList] = useState([]);
+  console.log(listItems);
   // on load, call the fetchItems function (remember: useEffect)
   useEffect(() =>{
     async function fetchItems(){
@@ -23,6 +24,7 @@ export default function ListPage() {
   }
 
   async function handleDeleteClick() {
+
     // delete all items
     deleteAllItems();
     // then call your fetchItems function to fetch and re-display
@@ -37,6 +39,7 @@ export default function ListPage() {
       <div className='item-list'>
         {/* map through all the list items and render them here */}
         {listItems.map((item, i) => <item key={`${item.name}-${i}`} item={item} />)}
+ 
       </div>
 
     </div>
