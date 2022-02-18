@@ -105,3 +105,18 @@ select {
 .bought {
   text-decoration: line-through;
 }
+.list-item{
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin:10px;
+}
+.item-list{
+  display:flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  margin:10px;
+  
+}

@@ -17,9 +17,9 @@ export default function ListItemForm({ fetchItems }) {
     // history.push('/shopping_list_items');
    
 
-    fetchItems([]);
+
     // refetch the items using the handler functionpassed down as a prop
-    fetchItems();
+    await fetchItems();
     setName('');
     setQuantity(0);
     
