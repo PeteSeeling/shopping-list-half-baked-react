@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import { createListItem } from './services/fetch-utils';
 
 export default function ListItemForm({ fetchItems }) {
