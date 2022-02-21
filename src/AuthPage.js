@@ -1,26 +1,26 @@
 import { useState } from 'react';
 import { signIn, signUp } from './services/fetch-utils.js';
 
-export default function AuthPage({
-  setUser
-}) {
+export default function AuthPage(props) {
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
- 
+  // const [user, setUser] = useState('');
 
+
+ 
   async function handleSignIn(e) {
     e.preventDefault();
       
     const user = await signIn(email, password);
-
-    setUser(user);
+    props.setUser(user);
   }
     
-  async function handleSignUp() {
+  async function handleSignUp(e) {
+    e.preventDefault();
 
     const user = await signUp(email, password);
-
-    setUser(user);
+    props.setUser(user);
   }
 
   return (
@@ -36,7 +36,7 @@ export default function AuthPage({
             Password
           <input required type="password" onChange={e => setPassword(e.target.value)} name="password" />
         </label>
-        <button>Sign In</button>
+        <button onClick={handleSignIn}>Sign In</button>
         <button type="button" onClick={handleSignUp} >Sign Up</button>
       </form>
     </div>

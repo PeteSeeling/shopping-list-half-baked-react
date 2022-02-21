@@ -21,7 +21,7 @@ export default function App() {
     // call the logout function
     logout();
     // clear the user in state
-    currentUser('');
+  
     setCurrentUser('');
     // setUser('');
   }
@@ -46,7 +46,7 @@ export default function App() {
               {
                 currentUser 
                   ? <Redirect to="/shopping-list" />
-                  : <AuthPage />
+                  : <AuthPage setUser={setCurrentUser}/>
 
               }
             </Route>
